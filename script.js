@@ -56,7 +56,7 @@ main.addEventListener("mousemove", (e) => {
         console.log(countT, "counT")
         cord = getCoords(target);
         rCur = (cord["left"] - x) ** 2 + (cord.top - y) ** 2;
-        param = Math.round(rCur * 30 / max);
+        param = Math.round(rCur * 35 / max);
         if (param > 60 && param < 500 && countTY >= 15) {
             audio.play();
             countTY = 0;
