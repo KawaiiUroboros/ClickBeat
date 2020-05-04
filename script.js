@@ -58,6 +58,7 @@ main.addEventListener("mousemove", (e) => {
     }
 });
 main.addEventListener("mouseenter", (e) => {
+    audio.play();
     console.log("mew")
     inDoc = true;
 });
