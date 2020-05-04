@@ -28,10 +28,11 @@ let rCur;
 let tick;
 let oldx = 0;
 let oldy = 0;
-//let msg = new SpeechSynthesisUtterance("beepboop");
-//msg.rate = 2;
+let msg = new SpeechSynthesisUtterance("поиск");
+msg.rate = 1;
 audio = new Audio('tick.mp3')
 max = getMax();
+
 addEventListener("mousemove", (e) => {
     x = e.offsetX;
     y = e.offsetY;
@@ -43,7 +44,7 @@ addEventListener("mousemove", (e) => {
         console.log(param);
         console.log(x, y);
         //console.log(rCurdop, "curdop");
-        //speechSynthesis.speak(msg);
+
         clearInterval(tick);
         //audio.play()
         tick = setInterval(() => audio.play(), param);
@@ -51,6 +52,13 @@ addEventListener("mousemove", (e) => {
         oldy = y;
     }
 
+
 });
+target.addEventListener("mouseenter", (e) => {
+    speechSynthesis.speak(msg);
+});
+addEventListener("mouseout", (e) => {
+    clearInterval(tick);
+})
 //vr = setInterval(() => console.log(rCur),param);
 //let vr = setInterval(() => console.log(rCur),2000);
