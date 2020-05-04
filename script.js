@@ -51,7 +51,7 @@ main.addEventListener("mousemove", (e) => {
     if (Math.abs(oldx - x) > 5 || Math.abs(oldy - y) > 5 || inDoc) {
         cord = getCoords(target);
         rCur = (cord["left"] - x) ** 2 + (cord.top - y) ** 2;
-        param = Math.round(rCur * 20 / max);
+        param = Math.round(rCur * 40 / max);
         if (param < 500) {
             audio.play();
         }
