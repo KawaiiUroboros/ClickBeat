@@ -31,8 +31,14 @@ let oldy = 0;
 let msg = new SpeechSynthesisUtterance(target.textContent);
 msg.rate = 1;
 msg.lang = 'ru-RU';
-main = document.getElementById('main');
+main = document.getElementById('app');
 audio = new Audio('tick.mp3');
+inn = new Audio('in.mp3');
+out = new Audio('out.mp3');
+inn.volume = 0.3;
+out.volume = 0.3;
+inn.playbackRate = 2;
+out.playbackRate = 2;
 complete = new Audio('complete.mp3');
 complete.volume = 0.03;
 audio.volume = 0.3;
@@ -40,14 +46,18 @@ complete.playbackRate = 3;
 max = getMax();
 let inDoc = false;
 main.addEventListener("mousemove", (e) => {
-    x = e.offsetX;
-    y = e.offsetY;
-    if (Math.abs(oldx - x) > 100 || Math.abs(oldy - y) > 100 || inDoc) {
+    x = e.pageX;
+    y = e.pageY;
+    if (Math.abs(oldx - x) > 5 || Math.abs(oldy - y) > 5 || inDoc) {
         cord = getCoords(target);
         rCur = (cord["left"] - x) ** 2 + (cord.top - y) ** 2;
-        param = Math.round(rCur * 2 / max);
-        console.log(param);
-        console.log(x, y);
+        param = Math.round(rCur * 20 / max);
+        if (param < 500) {
+            audio.play();
+        }
+        console.log(cord, "cord")
+        console.log(param, 'param');
+        console.log(x, y, 'x y');
         //console.log(rCurdop, "curdop");
         clearInterval(tick);
         //audio.play()
@@ -58,12 +68,11 @@ main.addEventListener("mousemove", (e) => {
     }
 });
 main.addEventListener("mouseenter", (e) => {
-    audio.play();
-    console.log("mew")
+    inn.play();
+    console.log("mew");
     inDoc = true;
 });
 target.addEventListener("mouseenter", (e) => {
-    clearInterval(tick);
     complete.play();
     speechSynthesis.speak(msg);
 });
@@ -71,7 +80,8 @@ target.addEventListener("mouseout", (e) => {
     speechSynthesis.cancel();
     inDoc = true;
 })
-main.addEventListener("mouseout", (e) => {
+main.addEventListener("mouseleave", (e) => {
+    out.play();
     clearInterval(tick);
 })
 //vr = setInterval(() => console.log(rCur),param);
