@@ -28,36 +28,49 @@ let rCur;
 let tick;
 let oldx = 0;
 let oldy = 0;
-let msg = new SpeechSynthesisUtterance("поиск");
+let msg = new SpeechSynthesisUtterance(target.textContent);
 msg.rate = 1;
-audio = new Audio('tick.mp3')
+msg.lang = 'ru-RU';
+main = document.getElementById('main');
+audio = new Audio('tick.mp3');
+complete = new Audio('complete.mp3');
+complete.volume = 0.03;
+audio.volume = 0.3;
+complete.playbackRate = 3;
 max = getMax();
-
-addEventListener("mousemove", (e) => {
+let inDoc = false;
+main.addEventListener("mousemove", (e) => {
     x = e.offsetX;
     y = e.offsetY;
-    cord = getCoords(target);
-    if (Math.abs(oldx - x) > 100 || Math.abs(oldy - y) > 100) {
+    if (Math.abs(oldx - x) > 100 || Math.abs(oldy - y) > 100 || inDoc) {
+        cord = getCoords(target);
         rCur = (cord["left"] - x) ** 2 + (cord.top - y) ** 2;
-
-        param = Math.round(rCur / max);
+        param = Math.round(rCur * 2 / max);
         console.log(param);
         console.log(x, y);
         //console.log(rCurdop, "curdop");
-
         clearInterval(tick);
         //audio.play()
         tick = setInterval(() => audio.play(), param);
         oldx = x;
         oldy = y;
+        inDoc = false;
     }
-
-
+});
+main.addEventListener("mouseenter", (e) => {
+    console.log("mew")
+    inDoc = true;
 });
 target.addEventListener("mouseenter", (e) => {
+    clearInterval(tick);
+    complete.play();
     speechSynthesis.speak(msg);
 });
-addEventListener("mouseout", (e) => {
+target.addEventListener("mouseout", (e) => {
+    speechSynthesis.cancel();
+    inDoc = true;
+})
+main.addEventListener("mouseout", (e) => {
     clearInterval(tick);
 })
 //vr = setInterval(() => console.log(rCur),param);
