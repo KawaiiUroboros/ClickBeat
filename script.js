@@ -42,22 +42,25 @@ out.playbackRate = 2;
 complete = new Audio('complete.mp3');
 complete.volume = 0.03;
 audio.volume = 0.3;
-let countT;
+let countT = 0;
 complete.playbackRate = 3;
 max = getMax();
 let inDoc = false;
 main.addEventListener("mousemove", (e) => {
     x = e.pageX;
     y = e.pageY;
-    countT += 1;
     if (Math.abs(oldx - x) > 5 || Math.abs(oldy - y) > 5 || inDoc) {
+        countT += 1;
+        console.log(countT, "counT")
         cord = getCoords(target);
         rCur = (cord["left"] - x) ** 2 + (cord.top - y) ** 2;
-        param = Math.round(rCur * 50 / max);
+        param = Math.round(rCur * 30 / max);
         if (param < 500) {
             audio.play();
-        } else if (param < 1100 && countT == 3) {
+            console.log("mew500")
+        } else if (param < 1100 && countT >= 3) {
             countT = 0;
+            console.log("mew1100")
             audio.play();
         }
         console.log(cord, "cord")
