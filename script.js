@@ -44,13 +44,14 @@ complete.volume = 0.03;
 audio.volume = 0.3;
 let countT = 0;
 let countTY = 0;
+let inTarget = false;
 complete.playbackRate = 3;
 max = getMax();
 let inDoc = false;
 main.addEventListener("mousemove", (e) => {
     x = e.pageX;
     y = e.pageY;
-    if (Math.abs(oldx - x) > 5 || Math.abs(oldy - y) > 5 || inDoc) {
+    if ((Math.abs(oldx - x) > 5 || Math.abs(oldy - y) > 5 || inDoc) && !inTarget) {
         countT += 1;
         countTY += 1;
         console.log(countT, "counT")
@@ -79,15 +80,24 @@ main.addEventListener("mousemove", (e) => {
     }
 });
 main.addEventListener("mouseenter", (e) => {
+    clearInterval(tick);
     inn.play();
     console.log("mew");
     inDoc = true;
 });
 target.addEventListener("mouseenter", (e) => {
+    inTarget = true;
+    clearInterval(tick);
     complete.play();
     speechSynthesis.speak(msg);
 });
+target.addEventListener("mouseover", (e) => {
+    inTarget = true;
+    clearInterval(tick);
+});
 target.addEventListener("mouseout", (e) => {
+    clearInterval(tick);
+    inTarget = false;
     speechSynthesis.cancel();
     inDoc = true;
 })
