@@ -94,6 +94,7 @@ target.addEventListener("mouseenter", (e) => {
 target.addEventListener("mouseover", (e) => {
     inTarget = true;
     clearInterval(tick);
+
 });
 target.addEventListener("mouseout", (e) => {
     clearInterval(tick);
