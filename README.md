@@ -1,5 +1,5 @@
 # ClickBeat
-The browser extension is for intuitive site navigation for visually impaired people.
+The browser extension for intuitive site navigation for visually impaired people.
 
 Desiged for Virus.Hack and took 2nd place on track "Development of an audiovisual service for people with disabilities".
 
