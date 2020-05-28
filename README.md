@@ -1,6 +1,8 @@
 # ClickBeat
 The browser extension is for intuitive site navigation for visually impaired people.
 
+Desiged for Virus.Hack and took 2nd place on track "Development of an audiovisual service for people with disabilities".
+
 # How does it work?
 
 1) Before implementation, the main elements of the web page are selected.
@@ -11,15 +13,18 @@ The browser extension is for intuitive site navigation for visually impaired peo
 
 # Tech stack
 JavaScript (programming language)
+
 Text-To-Speech engine
 
 # Demo video
 Example of work on the web-site premier.one 
+
 Youtube link: https://www.youtube.com/watch?v=GavMzPO2PdE
 
 # ClickBeat
-Браузерное-расширение написано на JavaScript для интуитивной навигации по сайту.
+Браузерное-расширение для интуитивной навигации по сайту для слабовидящих.
 
+Разработано для Virus.Hack и заняло 2 место по направлению "Разработка аудиовизуального сервиса для людей с ограниченными возможностями".
 # Как это работает?
 
   1) Перед внедрением выделяются основные элементы веб-страницы.
@@ -29,9 +34,11 @@ Youtube link: https://www.youtube.com/watch?v=GavMzPO2PdE
   3) При наведении на искомый элемент включается другой аудио-сигнал и синтезируется речь, соответствующая контенту элемента. Например, “Поиск” или же название фильма. 
 
 # Используемые технологии
-Язык программирования JavaScrip
+Язык программирования JavaScript
+
 Средство Текст-в-речь (TTS)
 
 # Демонстрационное видео
-Пример работы на сайте premier.one:
+Пример работы на сайте premier.one
+
 Ссылка на youtube: https://www.youtube.com/watch?v=GavMzPO2PdE
